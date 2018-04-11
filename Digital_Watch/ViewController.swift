@@ -10,18 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var lblTimer: UILabel!
-    @IBOutlet weak var timerSwitch: UISwitch!
     var myTimer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timerSwitch.isOn = false
-        
+
 //        myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        
         //클로저(closure)의 사용
-//        myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(myTimer) in self.updateTime()
-//        })
+        myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(myTimer) in self.updateTime()
+            })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,16 +35,7 @@ class ViewController: UIViewController {
         //        lblTime.text = String(describing: date)
     }
     
-    @IBAction func switchChanged(_ sender: Any) {
-        if timerSwitch.isOn == true {
-            myTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (myTimer) in
-                self.updateTime()
-            })
-        }else{
-            myTimer.invalidate()
-            
-        }
-    }
+
     
 }
 
